@@ -1,0 +1,345 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> 
+    <!-- bootstrap css link  -->
+    
+    <link rel="stylesheet" href="hh.css">
+</head>
+<body>
+    
+
+    <script language="JavaScript1.2">
+
+        //Autumn leaves- by Kurt Grigg (kurt.grigg@virgin.net)
+        //Modified by Dynamic Drive for NS6 functionality
+        //visit http://www.dynamicdrive.com for this script
+        
+        //Pre-load your image below!
+        grphcs=new Array(6)
+        Image0=new Image();
+        Image0.src=grphcs[0]="al.png";
+        Image1=new Image();
+        Image1.src=grphcs[1]="bl.png"
+        Image2=new Image();
+        Image2.src=grphcs[2]="cl.png"
+        Image3=new Image();
+        Image3.src=grphcs[3]="dl.png"
+        Image4=new Image();
+        Image4.src=grphcs[4]="el.png"
+        Image5=new Image();
+        Image5.src=grphcs[5]="fl." 
+        
+        Amount=8; //Smoothness depends on image file size, the smaller the size the more you can use!
+        Ypos=new Array();
+        Xpos=new Array();
+        Speed=new Array();
+        Step=new Array();
+        Cstep=new Array();
+        ns=(document.layers)?1:0;
+        ns6=(document.getElementById&&!document.all)?1:0;
+        
+        if (ns){
+        for (i = 0; i < Amount; i++){
+        var P=Math.floor(Math.random()*grphcs.length);
+        rndPic=grphcs[P];
+        document.write("<LAYER NAME='sn"+i+"' LEFT=0 TOP=0><img src="+rndPic+"></LAYER>");
+        }
+        }
+        else{
+        document.write('<div style="position:absolute;top:0px;left:0px"><div style="position:relative">');
+        for (i = 0; i < Amount; i++){
+        var P=Math.floor(Math.random()*grphcs.length);
+        rndPic=grphcs[P];
+        document.write('<img id="si'+i+'" src="'+rndPic+'" style="position:absolute;top:0px;left:0px">');
+        }
+        document.write('</div></div>');
+        }
+        WinHeight=(ns||ns6)?window.innerHeight:window.document.body.clientHeight;
+        WinWidth=(ns||ns6)?window.innerWidth-70:window.document.body.clientWidth;
+        for (i=0; i < Amount; i++){                                                                
+         Ypos[i] = Math.round(Math.random()*WinHeight);
+         Xpos[i] = Math.round(Math.random()*WinWidth);
+         Speed[i]= Math.random()*5+3;
+         Cstep[i]=0;
+         Step[i]=Math.random()*0.1+0.05;
+        }
+        function fall(){
+        var WinHeight=(ns||ns6)?window.innerHeight:window.document.body.clientHeight;
+        var WinWidth=(ns||ns6)?window.innerWidth-70:window.document.body.clientWidth;
+        var hscrll=(ns||ns6)?window.pageYOffset:document.body.scrollTop;
+        var wscrll=(ns||ns6)?window.pageXOffset:document.body.scrollLeft;
+        for (i=0; i < Amount; i++){
+        sy = Speed[i]*Math.sin(90*Math.PI/180);
+        sx = Speed[i]*Math.cos(Cstep[i]);
+        Ypos[i]+=sy;
+        Xpos[i]+=sx; 
+        if (Ypos[i] > WinHeight){
+        Ypos[i]=-60;
+        Xpos[i]=Math.round(Math.random()*WinWidth);
+        Speed[i]=Math.random()*5+3;
+        }
+        if (ns){
+        document.layers['sn'+i].left=Xpos[i];
+        document.layers['sn'+i].top=Ypos[i]+hscrll;
+        }
+        else if (ns6){
+        document.getElementById("si"+i).style.left=Math.min(WinWidth,Xpos[i]);
+        document.getElementById("si"+i).style.top=Ypos[i]+hscrll;
+        }
+        else{
+        eval("document.all.si"+i).style.left=Xpos[i];
+        eval("document.all.si"+i).style.top=Ypos[i]+hscrll;
+        } 
+        Cstep[i]+=Step[i];
+        }
+        setTimeout('fall()',20);
+        }
+        
+        window.onload=fall
+        //-->
+        </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+    
+              <!-- logo -->
+                    <img src="Pictures/logo.jpeg" alt="Logo" width="45" height="44" class="d-inline-block align-text-top">
+                   <b>Top Noch</b>
+                   <!-- slogo -->
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="https://www.startech.com.bd/">Gadgets</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="https://www.startech.com.bd/camera-accessories">Accessories</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Brands
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="https://electronics.sony.com/imaging/interchangeable-lens-cameras/c/all-interchangeable-lens-cameras">Sony</a></li>
+                      <li><a class="dropdown-item" href="https://asia.canon/en/consumer/products/search?category=photography&subCategory=interchangeable-lens-cameras">Canon</a></li>
+                      <li>
+                    </ul>
+                  </li>
+                  
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+         <!-- navbar completed -->
+    
+    
+    
+         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="Pictures/a.jpeg" class="d-block w-100" alt="..." width="500" height="300">
+              </div>
+              <div class="carousel-item">
+                <img src="Pictures/b.jpeg" class="d-block w-100" alt="..."width="500" height="300">
+              </div>
+              <div class="carousel-item">
+                <img src="Pictures/c.jpeg" class="d-block w-100" alt="..."width="500" height="300">
+              </div>
+              <div class="carousel-item">
+                <img src="Pictures/d.jpeg" class="d-block w-100" alt="..."width="500" height="300">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    
+         <!-- card -->
+    
+         <div class="container">
+          <div class="row">
+      
+              <!-- card no 1 -->
+              <div class="card col col-lg-4 col-md-6 col-12" style="width: 18rem;">
+                 <a href="#"> <img src="Pictures/card 1.jpeg" class="card-img-top" alt="..."></a>
+                  <div class="card-body">
+                    <h5 class="card-title">Sony Alpha 7C</h5>
+                    <p class="card-text">Brand:	Sony <br>
+                      Model Name:	ILCE7C/B <br>
+                      Maximum Webcam Image Resolution:	25.3 MP <br>
+                      Photo Sensor Size:	Full Frame (35mm) <br>
+                      Image Stabilization:	Sensor-shift <br>
+                      Min Shutter Speed:	1/8000 seconds</p>
+                    <a href="https://www.amazon.com/Sony-Alpha-Full-Frame-Mirrorless-Camera/dp/B08HVZLQ4F?th=1" class="btn btn-primary"> View</a>
+                  </div>
+                </div>
+      
+                <!-- card no 2 -->
+                
+                  <div class="card col col-lg-4 col-md-6 col-12 mix-style" style="width: 18rem;">
+                      <a href="#"><img src="Pictures/card 2.jpeg" class="card-img-top" alt="..."></a>
+                      <div class="card-body">
+                        <h5 class="card-title">Canon EOS R5</h5>
+                        <p class="card-text">Brand:	Canon <br>
+    
+                          Model Name:	Canon EOS R5 <br>
+                        
+                          Maximum Webcam Image Resolution:	45 MP <br>
+                          Photo Sensor Size:	Full Frame (35mm) <br>
+                          Image Stabilization:	Sensor-shift <br>
+                          Max Shutter Speed: 	1/8000 seconds</p>
+                        <a href="https://www.amazon.com/Canon-Full-Frame-Mirrorless-Megapixel-Processor/dp/B08C68F2DX/ref=sr_1_1?crid=11H88G7VKCFAJ&dib=eyJ2IjoiMSJ9.5j9JOYAaKY5tnwhxWd1aX6Y4AxAMfx_GwBcyyo0cgLrjppEsH6xAtaw6MFUfgh4DeymKwhyYHlCXnVDmBPjfVCFU2-3imeclojmmJOyRaShOtUMl8ZlU5a6hc7AsZxOwQNAZQzWvhlKfUYmnXvSryAioAV0a6_omIUMbj2lDIFTeQDVqnUPCsBbNVNnEgnAw-luBx8gB42sTdQiEDMjm8BbERrUvBfkV64qnCKiy84c.AUKA0RpHe0twLrytW5DK9c3upT_skmnKq4yeBUh_zQU&dib_tag=se&keywords=canon%2Br5&qid=1713383750&sprefix=canon%2Br%2Caps%2C419&sr=8-1&th=1" class="btn btn-primary">View</a>
+                      </div>
+                    </div>    
+                    <!-- card no 3 -->
+                    
+                      <div class="card col col-lg-4 col-md-6 col-12" style="width: 18rem;">
+                         <a href="#"> <img src="Pictures/card 3.jpeg" class="card-img-top" alt="..."></a>
+                          <div class="card-body">
+                            <h5 class="card-title">OnePlus Nord Buds 2 </h5>
+                            <p class="card-text">
+                              Brand:	OnePlus <br>
+                              Model Name:	OnePlus Nord Buds 2 <br>
+                              Color:	Lightning White <br>
+                              Form Factor:	In Ear <br>
+                              Connectivity Technology:	Wireless
+                              </p>
+                            <a href="https://www.amazon.com/OnePlus-Wireless-Earbuds-Titanium-Playback/dp/B0C22RMB2M/ref=sr_1_1?crid=2IV4YLB0I60X1&dib=eyJ2IjoiMSJ9.1HyIrcbjgMKhGvk9ARkg6PQ_OHBGpSoNIn-I_4IdICuCH0S5rBxLcsFXSickN1vKnAd-xfFYIXbwzfBqhZEhSjj7_jKGWEKZGYW9KNGbNO6RK6Zo7EGtjpbJKFHKFCQyfCTGDVcmjrGAk2VlUwMV_t-37sn4xx2mYPAZlYjShv_RJ6iPSwjUVT4PUg2pc_G7kiFtoflgFtncd4BBglh91RaYR_RYse9imICW-lk3ufAgq9QSA3AT3WLYbjo_2c2CoXrQL8in9_nFoADp5n0X7uAGbk3UjrmC9W2b0hO6XEw.3062_rAudO-fVwn3Cf4lsauRrs9C0gdO_FHaMagAI60&dib_tag=se&keywords=oneplus%2Bz2&qid=1713384200&sprefix=oneplus%2Bz%2Caps%2C528&sr=8-1&th=1" class="btn btn-primary">View</a>
+                          </div>
+                        </div> 
+    
+                         <!-- card no 4 -->
+                
+                  <div class="card col col-lg-4 col-md-6 col-12 mix-style" style="width: 18rem;">
+                    <a href="#"><img src="Pictures/card 4.jpeg" class="card-img-top" alt="..."> </a>
+                    <div class="card-body">
+                      <h5 class="card-title">Apple Watch Ultra 2</h5>
+                      <p class="card-text">
+                        Brand:	Apple <br>
+                        Color:	Titanium Case with Orange Ocean Band <br>
+                        Special Feature:	GPS <br>
+                        Target Audience:	Unisex adult <br>
+                        Compatible Devices:Smartphone</p>
+                      <a href="https://www.amazon.com/Apple-Cellular-Titanium-Orange-AppleCare/dp/B0CMZGN7LL/ref=sr_1_1?crid=OT6KV5L0XG4V&dib=eyJ2IjoiMSJ9.WF7zudOhPicRf-ICEmPsdVx6DPm1WJR3dtAWpWK-Smeqgp3fqyKpslCGzKCUmUIH9s2LKm2ANQzlhti_iDvr-hYlu5uS-BJn7C2aQD5A6Z7Yud8v4SPHvw8Rha-3dfybt7k-A2IQzwJR1QGF4qGp7dwR9cx19VgklTWyar2RABduq539xxI6f5uJr3Y7u_u0yRyntHSjhTC_wHX6AJPZhBnSCoheeRXKDknEFX_m0EM.k6Kp45EyF6x6qTIES08iuO9SiLiMFPw3AvplaQsnmjw&dib_tag=se&keywords=apple+watch+orange&qid=1713384673&sprefix=apple+watch+orang%2Caps%2C828&sr=8-1" class="btn btn-primary">View</a>
+                    </div>
+                  </div>    
+    
+                  <!-- card no 5 -->
+                
+                  <div class="card col col-lg-4 col-md-6 col-12 mix-style" style="width: 18rem;">
+                   <a href="#"> <img src="Pictures/card 5.jpeg" class="card-img-top" alt="..."></a>
+                    <div class="card-body">
+                      <h5 class="card-title">Sigma 24mm F3.5 DG DN</h5>
+                      <p class="card-text">Brand:	Sigma <br>
+                        Focal Length Description:	Wide angle 0.9 inches (24 mm) <br>
+                        Lens Type:	Mirror Lens <br>
+                        Compatible Mountings:	Leica L <br>
+                        Camera Lens Description:	24mm</p>
+                      <a href="https://www.amazon.com/Sigma-24mm-F3-5-DG-L-Mount/dp/B08T9RLPM4/ref=sr_1_1?crid=1P15RAWDW6TSB&dib=eyJ2IjoiMSJ9.8jVuh0g4R7QKrV0_c7fqBaYK5tIYrthqWqOeAcSPdmf7Yq5QHdGbl68TUqjq__dMb2M6JoqpW60ektuwUuuOt7b-cd0x4lHd3eqL-QZTJPD9rWFS7PnApOiTpUq7jfu4kDZ8yGFek-EcrlZ-fvHk0UT06LWknxcbM6L7nA7WK4gpLbhpGxZjX82XbuV-jl11F5xxSecJiRbe3Xr1AicnWMeXsc34aIG1RHlUM-nbY_I.qKGyk6tl7me8NOADxB6_5PWrhojlkzseNgoNrkXjl2s&dib_tag=se&keywords=Sigma%2B24mm%2BF3_5%2BDg%2BDn&qid=1713385354&sprefix=sigma%2B24mm%2Bf3_5%2Bdg%2Bdn%2Caps%2C588&sr=8-1&th=1" class="btn btn-primary">View</a>
+                    </div>
+                  </div>    
+    
+                <!-- card no 6 -->
+                
+                <div class="card col col-lg-4 col-md-6 col-12 mix-style" style="width: 18rem;">
+                 <a href="#"> <img src="Pictures/card 6.jpeg" class="card-img-top" alt="..."> </a>
+                  <div class="card-body">
+                    <h5 class="card-title">Sony Alpha ZV-E10</h5>
+                    <p class="card-text">Brand:	Sony <br>
+                      Model Name:	ILCZV-E10L/B <br>
+                      Maximum Webcam Image Resolution:	25 MP <br>
+                      Photo Sensor Size:	APS-C <br>
+                      Image Stabilization:	Digital <br>
+                      Max Shutter Speed:	1/4000 seconds</p>
+                    <a href="https://www.amazon.com/Sony-Alpha-ZV-E10-Interchangeable-Mirrorless/dp/B09BBLH4SG/ref=sr_1_1_mod_primary_new?crid=2V4DOQQXUH2FA&dib=eyJ2IjoiMSJ9.PAleVIycIEzPcWxHQWCT2giE2hcew7RyU3kfFWPenmodIb6D6lD0h_grIt_fropNVPsPuQZ0AkydNIUr2K8CWXN6Lt7fGOnYM5IEk2UYg_5k2vYhV_kD8Bv97p5YEBpkgX1Muas9kpsSCbYePWlqY4wZOyFF4HR2CydUbUbJ_Vt3zYP0bFCQVzCZf-IxyDrAiNQ2zqsR5n7L7em9pYu178XU6BJte0Sb3hGKp1qAT5U.dYnMYJvN5BtxAAxSLpYGpoURzmTQKlzJn6GdUsDaHJM&dib_tag=se&keywords=Sony%2BZV-E10&qid=1713385603&sprefix=sony%2Bzv-e10%2Caps%2C494&sr=8-1&th=1" class="btn btn-primary">View</a>
+                  </div>
+                </div>    
+    
+                <!-- card no 7 -->
+                
+                <div class="card col col-lg-4 col-md-6 col-12 mix-style" style="width: 18rem;">
+                  <a href="#"><img src="Pictures/card 7.jpeg" class="card-img-top" alt="..."></a>
+                  <div class="card-body">
+                    <h5 class="card-title">Apple AirPods Pro</h5>
+                    <p class="card-text">Brand:	Apple <br>
+                      Model Name:	AirPods Pro (2nd Gen, 2023) <br>
+                      Color:	White <br>
+                      Form Factor:	In Ear <br>
+                      Connectivity Technology:	Wireless</p>
+                    <a href="https://www.amazon.com/Apple-Generation-Cancelling-Transparency-Personalized/dp/B0CHWRXH8B/ref=sr_1_2?crid=2RJ3XPOMMUR1F&dib=eyJ2IjoiMSJ9.4rEdYzOmScIp98WcWZCdEmzouhxdzJ01ary-Ronxb_ynFliS-Yg1kowuU6J69QQ4vTCQsHzvnzZaSujhPcL5QBlMWDlK7UWX_gfDALYVLORJ1IPgZM1yzVeMHhPWVnGByQk_1XfEcW5f1_KR0Et1nZT56DA01s5ZKQGKDKWq8giNXdX_xJmjR38fmgTIzWIQ3zWW3MHQHN4xu25pbEjdLTwo-hmeFr7-_41RrJdNryA.Eksx_El72iw1vQmwkYmLTnwncFmq1RUy-ezjLtT28A4&dib_tag=se&keywords=Apple+AirPods+Pro+%282nd+Generation%29&qid=1713386017&sprefix=apple+airpods+pro+2nd+generation+%2Caps%2C568&sr=8-2" class="btn btn-primary">View</a>
+                  </div>
+                </div>    
+    
+                     <!-- card no 8 -->
+                
+                  <div class="card col col-lg-4 col-md-6 col-12 mix-style" style="width: 18rem;">
+                      <a href="#"><img src="Pictures/Card 8.jpeg" class="card-img-top" alt="..."> </a>
+                      <div class="card-body">
+                        <h5 class="card-title">One-Plus Bullets Wireless Z2</h5>
+                        <p class="card-text">Brand:	Generic <br>
+                          Model Name:	BWZ-2 ANC <br>
+                          Color:	Red <br>
+                          Form Factor:	In Ear <br>
+                          Connectivity Technology:	Wireless</p>
+                        <a href="https://www.amazon.com/One-Plus-ANC-Bluetooth-Earphones-Bombastic/dp/B0D193F7MF/ref=sr_1_fkmr0_1?crid=3COQGOA474YZ1&dib=eyJ2IjoiMSJ9.W_MbGMTpA2F22ha5aNyLgPMJRnzPCOCBN05QQ1cTsCKZxEl_O0fRThdOtNndrrZWrLibfcR4pQ7fvXJjSsSVk-L_8FIZ8W7G52DNVhST1gw.qJgKl3ugOY0rsioHhCG_x7s8mwzPXJItDMETVeoLC9c&dib_tag=se&keywords=OnePlus+Bullets+Wireless+Z&qid=1713386296&sprefix=oneplus+bullets+wireless+z+bass+edition%2Caps%2C813&sr=8-1-fkmr0" class="btn btn-primary">View</a>
+                      </div>
+                    </div>    
+    
+                     <!-- card no 9 -->
+                
+      
+            <!-- cards ended -->
+    
+    
+    
+           <!-- footer -->
+      
+           <footer>
+            <p>&copy; 2024 <img src="Pictures/logo.jpeg" alt="" class="fter" width="30" height="28" >   Top Noch. <a href="#">Contact Us </a>  ||             Phone:0171408956 || Facebook: <a href="#">Top Noch </a>.</p>
+            <p></p>
+        </footer>
+      
+        <!-- footer end -->
+    
+    
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <!-- bootstrap js link -->
+    
+        <script src="finaltask.js"></script>
+        <!-- own js -->
+
+
+
+
+
+</body>
+</html>
